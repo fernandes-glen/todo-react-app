@@ -10,8 +10,8 @@ import {
 
 function App() {
   const [toDo, setToDo] = useState([
-    // { id: 1, title: "Task 1", status: false },
-    // { id: 2, title: "Task 2", status: false },
+    { id: 1, title: "Task 1", status: false },
+    { id: 2, title: "Task 2", status: false },
   ]);
 
   // temp
@@ -51,6 +51,21 @@ function App() {
       {/* display todos */}
 
       {toDo && toDo.length ? "" : "No tasks"}
+
+      {toDo &&
+        toDo.map((task, index) => {
+          return (
+            <React.Fragment key={task.id}>
+              <div className="col taskBg">
+                {/* if task.status is true then display done esle no */}
+                <div className={task.status ? "done" : ""}>
+                  <span className="taskNumber">{index + 1}</span>
+                  <span className="taskText">{task.title}</span>
+                </div>
+              </div>
+            </React.Fragment>
+          );
+        })}
     </div>
   );
 }
