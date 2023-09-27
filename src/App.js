@@ -41,7 +41,10 @@ function App() {
   };
 
   //function to delete task
-  const deleteTask = (id) => {};
+  const deleteTask = (id) => {
+    let newTasks = toDo.filter((task) => task.id !== id);
+    setToDo(newTasks);
+  };
 
   //function to mark task as done
   const markDone = (id) => {};
@@ -115,7 +118,7 @@ function App() {
                     <span title="edit">
                       <FontAwesomeIcon icon={faPen} />
                     </span>
-                    <span title="delete">
+                    <span title="delete" onClick={() => deleteTask(task.id)}>
                       <FontAwesomeIcon icon={faTrashCan} />
                     </span>
                   </div>
