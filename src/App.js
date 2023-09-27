@@ -48,6 +48,18 @@ function App() {
       <h2> TO DO APP</h2>
       <br></br>
 
+      {/* update task  */}
+
+      <div className="row">
+        <div className="col">
+          <input className="form-control form-control-lg"></input>
+        </div>
+        <div className="col-auto">
+          <button className="btn btn-lg btn-success mr-20">Update</button>
+          <button className="btn btn-lg btn-warning">Cancel</button>
+        </div>
+      </div>
+      <br />
       {/* add task */}
       <div className="row">
         <div className="col">
