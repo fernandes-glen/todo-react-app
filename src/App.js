@@ -18,13 +18,27 @@ function App() {
   // this is for holding temp data that will be added as new task in task list
 
   const [newTask, setNewTask] = useState("");
+
   //hold data that is being edited
 
   const [updateData, setUpdateDate] = useState("");
 
   //function to add task
 
-  const addTask = () => {};
+  const addTask = () => {
+    // if there is a new task
+    if (newTask) {
+      //we create a id by using this
+      let num = toDo.length + 1;
+      // then we create a new todo object
+      let newEntry = { id: num, title: newTask, status: false };
+      //then we append the new task to the exsisting array using spread operator
+      // ... means exsiting too do elements  and then we add a new Entry that is new task
+      setToDo([...toDo, newEntry]);
+      //and after appedning and create a new todo task list we empty the input field using
+      setNewTask(" ");
+    }
+  };
 
   //function to delete task
   const deleteTask = (id) => {};
@@ -60,13 +74,20 @@ function App() {
         </div>
       </div>
       <br />
+
       {/* add task */}
       <div className="row">
         <div className="col">
-          <input className="form-control form-control-lg" />
+          <input
+            value={newTask}
+            onChange={(e) => setNewTask(e.target.value)}
+            className="form-control form-control-lg"
+          />
         </div>
         <div className="col-auto">
-          <button className="btn btn-lg btn-success">Add Task</button>
+          <button className="btn btn-lg btn-success" onClick={addTask}>
+            Add Task
+          </button>
         </div>
       </div>
       <br />
