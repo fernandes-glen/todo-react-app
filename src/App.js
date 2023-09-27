@@ -48,6 +48,17 @@ function App() {
       <h2> TO DO APP</h2>
       <br></br>
 
+      {/* add task */}
+      <div className="row">
+        <div className="col">
+          <input className="form-control form-control-lg" />
+        </div>
+        <div className="col-auto">
+          <button className="btn btn-lg btn-success">Add Task</button>
+        </div>
+      </div>
+      <br />
+
       {/* display todos */}
 
       {toDo && toDo.length ? "" : "No tasks"}
@@ -65,13 +76,13 @@ function App() {
                     <span className="taskText">{task.title}</span>
                   </div>
                   <div className="iconsWrap">
-                    <span>
+                    <span title="Completed/ Not Completed">
                       <FontAwesomeIcon icon={faCircleCheck} />
                     </span>
-                    <span>
+                    <span title="edit">
                       <FontAwesomeIcon icon={faPen} />
                     </span>
-                    <span>
+                    <span title="delete">
                       <FontAwesomeIcon icon={faTrashCan} />
                     </span>
                   </div>
