@@ -47,7 +47,22 @@ function App() {
   };
 
   //function to mark task as done
-  const markDone = (id) => {};
+  //so what happens here is that
+  // the id passed to the mardone is the id which we ant to update as done
+  // so we map through ecah of the task in to do
+  //if the task id of the list matches with the id which we pressed then it returns the new array with the id of
+  //that task as true so there will be a line strike on that task
+  // and if no id is matched then it returns the task unchanged
+  //and then chnages the state of settodo
+  const markDone = (id) => {
+    let newTask = toDo.map((task) => {
+      if (task.id === id) {
+        return { ...task, status: !task.status };
+      }
+      return task;
+    });
+    setToDo(newTask);
+  };
 
   //function to cancel update
   const cancelUpdate = () => {};
@@ -112,7 +127,10 @@ function App() {
                     <span className="taskText">{task.title}</span>
                   </div>
                   <div className="iconsWrap">
-                    <span title="Completed/ Not Completed">
+                    <span
+                      title="Completed/ Not Completed"
+                      onClick={(e) => markDone(task.id)}
+                    >
                       <FontAwesomeIcon icon={faCircleCheck} />
                     </span>
                     <span title="edit">
