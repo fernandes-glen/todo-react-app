@@ -10,8 +10,8 @@ import {
 
 function App() {
   const [toDo, setToDo] = useState([
-    { id: 1, title: "Task 1", status: false },
-    { id: 2, title: "Task 2", status: false },
+    // { id: 1, title: "Task 1", status: false },
+    // { id: 2, title: "Task 2", status: false },
   ]);
 
   // temp
@@ -65,7 +65,9 @@ function App() {
   };
 
   //function to cancel update
-  const cancelUpdate = () => {};
+  const cancelUpdate = () => {
+    setUpdateData("");
+  };
 
   //function to change task for update
   //read
@@ -117,7 +119,9 @@ function App() {
               >
                 Update
               </button>
-              <button className="btn btn-lg btn-warning">Cancel</button>
+              <button className="btn btn-lg btn-warning" onClick={cancelUpdate}>
+                Cancel
+              </button>
             </div>
           </div>
           <br />
