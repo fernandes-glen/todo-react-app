@@ -133,9 +133,13 @@ function App() {
                     >
                       <FontAwesomeIcon icon={faCircleCheck} />
                     </span>
-                    <span title="edit">
-                      <FontAwesomeIcon icon={faPen} />
-                    </span>
+                    {/* if task status is true then dont show pen icon or else show the pen icon */}
+                    {task.status ? null : (
+                      <span title="edit">
+                        <FontAwesomeIcon icon={faPen} />
+                      </span>
+                    )}
+
                     <span title="delete" onClick={() => deleteTask(task.id)}>
                       <FontAwesomeIcon icon={faTrashCan} />
                     </span>
