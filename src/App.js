@@ -21,7 +21,7 @@ function App() {
 
   //hold data that is being edited
 
-  const [updateData, setUpdateDate] = useState("");
+  const [updateData, setUpdateData] = useState("");
 
   //function to add task
 
@@ -67,8 +67,18 @@ function App() {
   //function to cancel update
   const cancelUpdate = () => {};
 
-  //function to chnage task for update
-  const changeTask = (e) => {};
+  //function to change task for update
+  //read
+  // here we update the data and can use new data and type of the
+  //exiting input feild
+  const changeTask = (e) => {
+    let newEntry = {
+      id: updateData.id,
+      title: e.target.value,
+      status: updateData.status ? true : false,
+    };
+    setUpdateData(newEntry);
+  };
 
   //function to update task
 
@@ -84,7 +94,14 @@ function App() {
 
       <div className="row">
         <div className="col">
-          <input className="form-control form-control-lg"></input>
+          <input
+            //read
+            //The updateData && updateData.title part is used to ensure that the value is only displayed when updateData exists
+            // and has a title. It helps prevent errors when updateData is initially empty.
+            value={updateData && updateData.title}
+            onChange={(e) => changeTask(e)}
+            className="form-control form-control-lg"
+          ></input>
         </div>
         <div className="col-auto">
           <button className="btn btn-lg btn-success mr-20">Update</button>
@@ -135,7 +152,18 @@ function App() {
                     </span>
                     {/* if task status is true then dont show pen icon or else show the pen icon */}
                     {task.status ? null : (
-                      <span title="edit">
+                      //read
+                      <span
+                        title="edit"
+                        // so when we click , we set the updated data as id as task id so that we click on that specfic task .
+                        onClick={() =>
+                          setUpdateData({
+                            id: task.id,
+                            title: task.title,
+                            status: task.status ? true : false,
+                          })
+                        }
+                      >
                         <FontAwesomeIcon icon={faPen} />
                       </span>
                     )}
