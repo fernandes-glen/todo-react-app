@@ -97,43 +97,51 @@ function App() {
       <br></br>
 
       {/* update task  */}
-
-      <div className="row">
-        <div className="col">
-          <input
-            //read
-            //The updateData && updateData.title part is used to ensure that the value is only displayed when updateData exists
-            // and has a title. It helps prevent errors when updateData is initially empty.
-            value={updateData && updateData.title}
-            onChange={(e) => changeTask(e)}
-            className="form-control form-control-lg"
-          ></input>
-        </div>
-        <div className="col-auto">
-          <button className="btn btn-lg btn-success mr-20" onClick={updateTask}>
-            Update
-          </button>
-          <button className="btn btn-lg btn-warning">Cancel</button>
-        </div>
-      </div>
-      <br />
-
-      {/* add task */}
-      <div className="row">
-        <div className="col">
-          <input
-            value={newTask}
-            onChange={(e) => setNewTask(e.target.value)}
-            className="form-control form-control-lg"
-          />
-        </div>
-        <div className="col-auto">
-          <button className="btn btn-lg btn-success" onClick={addTask}>
-            Add Task
-          </button>
-        </div>
-      </div>
-      <br />
+      {updateData ? (
+        <>
+          <div className="row">
+            <div className="col">
+              <input
+                //read
+                //The updateData && updateData.title part is used to ensure that the value is only displayed when updateData exists
+                // and has a title. It helps prevent errors when updateData is initially empty.
+                value={updateData && updateData.title}
+                onChange={(e) => changeTask(e)}
+                className="form-control form-control-lg"
+              ></input>
+            </div>
+            <div className="col-auto">
+              <button
+                className="btn btn-lg btn-success mr-20"
+                onClick={updateTask}
+              >
+                Update
+              </button>
+              <button className="btn btn-lg btn-warning">Cancel</button>
+            </div>
+          </div>
+          <br />
+        </>
+      ) : (
+        <>
+          {/* add task */}
+          <div className="row">
+            <div className="col">
+              <input
+                value={newTask}
+                onChange={(e) => setNewTask(e.target.value)}
+                className="form-control form-control-lg"
+              />
+            </div>
+            <div className="col-auto">
+              <button className="btn btn-lg btn-success" onClick={addTask}>
+                Add Task
+              </button>
+            </div>
+          </div>
+          <br />
+        </>
+      )}
 
       {/* display todos */}
 
