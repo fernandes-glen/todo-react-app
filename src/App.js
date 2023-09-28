@@ -82,7 +82,13 @@ function App() {
 
   //function to update task
 
-  const updateTask = () => {};
+  const updateTask = () => {
+    // remove old todo with  with the same id and get the remaning data using filter method
+    let filterRecords = [...toDo].filter((task) => task.id !== updateData.id);
+    let updatedObject = [...filterRecords, updateData];
+    setToDo(updatedObject);
+    setUpdateData(" ");
+  };
 
   return (
     <div className="container App">
@@ -104,7 +110,9 @@ function App() {
           ></input>
         </div>
         <div className="col-auto">
-          <button className="btn btn-lg btn-success mr-20">Update</button>
+          <button className="btn btn-lg btn-success mr-20" onClick={updateTask}>
+            Update
+          </button>
           <button className="btn btn-lg btn-warning">Cancel</button>
         </div>
       </div>
@@ -181,3 +189,8 @@ function App() {
 }
 
 export default App;
+
+//when we hit the update button
+// we take the updated objec from this temp state compare its id from the ids in our original state of to do list then
+// we remove that record with that id from original to do list and
+//add this updated object that is stored here in temp state into this task todo list
