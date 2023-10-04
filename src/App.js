@@ -26,7 +26,7 @@ function App() {
 
   const addTask = () => {
     // if there is a new task
-    if (newTask) {
+    if (newTask !== " ") {
       //we create a id by using this
       let num = toDo.length + 1;
       // then we create a new todo object
